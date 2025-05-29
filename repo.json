@@ -10,7 +10,7 @@
     "RepoUrl": "https://github.com/MeowZWR/AntiAfkKick",
     "ApplicableVersion": "any",
     "DalamudApiLevel": 11,
-    "IconUrl": "https://meowrs.com/https://github.com/MeowZWR/DalamudPlugin/raw/main/Plugins/AntiAfkKick-Dalamud/icon.png",
+    "IconUrl": "https://static.meowrs.com/Plugins/AntiAfkKick-Dalamud/icon.png",
     "ImageUrls": [],
     "IsHide": "False",
     "IsTestingExclusive": false,
