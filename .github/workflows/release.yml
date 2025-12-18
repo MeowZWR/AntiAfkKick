@@ -14,9 +14,9 @@ jobs:
         with:
           submodules: recursive
       - name: Setup .NET
-        uses: actions/setup-dotnet@v1
+        uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: '9.x.x'
+          dotnet-version: '10.x.x'
       - name: Restore dependencies
         run: dotnet restore AntiAfkKick-Dalamud/AntiAfkKick-Dalamud.csproj
       - name: Download Dalamud
@@ -51,7 +51,7 @@ jobs:
           tag_name: ${{ github.ref }}
           release_name: AntiAfkKick ${{ github.ref }}
           draft: false
-          prerelease: false
+          prerelease: true
       - name: Upload Release Asset
         id: upload-release-asset
         uses: actions/upload-release-asset@v1
@@ -69,11 +69,24 @@ jobs:
           $verBase = $ver -replace '-cn$', ''
           $path = './repo.json'
           $json = Get-Content -Raw $path | ConvertFrom-Json
-          $json[0].AssemblyVersion = $verBase
-          $json[0].TestingAssemblyVersion = $verBase
-          $json[0].DownloadLinkInstall = $json.DownloadLinkInstall -replace '[^/]+/AntiAfkKick-Dalamud.zip',"$ver/AntiAfkKick-Dalamud.zip"
-          $json[0].DownloadLinkTesting = $json.DownloadLinkTesting -replace '[^/]+/AntiAfkKick-Dalamud.zip',"$ver/AntiAfkKick-Dalamud.zip"
-          $json[0].DownloadLinkUpdate = $json.DownloadLinkUpdate -replace '[^/]+/AntiAfkKick-Dalamud.zip',"$ver/AntiAfkKick-Dalamud.zip"
+          $item = $json[0]
+          $item.AssemblyVersion = $verBase
+          if ($item.PSObject.Properties.Name -notcontains 'TestingAssemblyVersion') {
+            $item | Add-Member -NotePropertyName TestingAssemblyVersion -NotePropertyValue $verBase
+          } else {
+            $item.TestingAssemblyVersion = $verBase
+          }
+          $dl = $item.DownloadLinkInstall
+          $idx = $dl.IndexOf('/releases/download/')
+          if ($idx -ge 0) { $item.DownloadLinkInstall = $dl.Substring(0,$idx) + "/releases/download/$ver/AntiAfkKick-Dalamud.zip" }
+
+          $dl = $item.DownloadLinkTesting
+          $idx = $dl.IndexOf('/releases/download/')
+          if ($idx -ge 0) { $item.DownloadLinkTesting = $dl.Substring(0,$idx) + "/releases/download/$ver/AntiAfkKick-Dalamud.zip" }
+
+          $dl = $item.DownloadLinkUpdate
+          $idx = $dl.IndexOf('/releases/download/')
+          if ($idx -ge 0) { $item.DownloadLinkUpdate = $dl.Substring(0,$idx) + "/releases/download/$ver/AntiAfkKick-Dalamud.zip" }
           $content = $json | ConvertTo-Json -AsArray
           set-content -Path $path -Value $content
 
