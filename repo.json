@@ -1,12 +1,11 @@
 [
-{
+  {
     "Author": "NightmareXIV",
     "Name": "AntiAfkKick",
     "Punchline": "防止挂机被自动踢下线，安装后生效，没设置项。",
-    "Description":"防止挂机被自动踢下线，安装后生效，没设置项。",
     "Description": "",
     "InternalName": "AntiAfkKick-Dalamud",
-    "AssemblyVersion": "2.1.0.9",
+    "AssemblyVersion": "2.1.0.10",
     "RepoUrl": "https://github.com/MeowZWR/AntiAfkKick",
     "ApplicableVersion": "any",
     "DalamudApiLevel": 13,
@@ -14,8 +13,9 @@
     "ImageUrls": [],
     "IsHide": "False",
     "IsTestingExclusive": false,
-    "DownloadLinkInstall": "https://meowrs.com/https://github.com/MeowZWR/AntiAfkKick/releases/download/2.1.0.9-cn/antiafkkick-dalamud.zip",
-    "DownloadLinkTesting": "https://meowrs.com/https://github.com/MeowZWR/AntiAfkKick/releases/download/2.1.0.9-cn/antiafkkick-dalamud.zip",
-    "DownloadLinkUpdate": "https://meowrs.com/https://github.com/MeowZWR/AntiAfkKick/releases/download/2.1.0.9-cn/antiafkkick-dalamud.zip"
+    "DownloadLinkInstall": "https://meowrs.com/https://github.com/MeowZWR/AntiAfkKick/releases/download/2.1.0.10-cn/AntiAfkKick-Dalamud.zip",
+    "DownloadLinkTesting": "https://meowrs.com/https://github.com/MeowZWR/AntiAfkKick/releases/download/2.1.0.10-cn/AntiAfkKick-Dalamud.zip",
+    "DownloadLinkUpdate": "https://meowrs.com/https://github.com/MeowZWR/AntiAfkKick/releases/download/2.1.0.10-cn/AntiAfkKick-Dalamud.zip",
+    "TestingAssemblyVersion": "2.1.0.10"
   }
 ]
